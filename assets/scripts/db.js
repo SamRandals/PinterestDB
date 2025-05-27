@@ -189,6 +189,8 @@ form__container.innerHTML=`
 `
 contentMenu.appendChild(form__container);
 
+
+
 setDropZone();
 setPublishButton();
 })
@@ -275,7 +277,9 @@ async function setPublishButton(){
             }
             
             await startDB();
+            alert("Los datos fueron guardados correctamente!")
             await addPin(newPin);
+            
 
     }
         })
