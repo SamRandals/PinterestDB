@@ -1,0 +1,256 @@
+body, nav, header, input, h1, h2, h3, p, input, textarea, div, ul{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    --bg-color:#fff;
+    --border-color:#D1D1C7;
+    color: #222;
+}
+
+.main__container{
+    display: grid;
+    grid-template-columns: minmax(70px, 80px)1fr;
+    height: 100dvh;
+}
+
+/* Aside menu icons and drops */
+.pinterest-logo{
+    margin-bottom: 10px;
+}
+.bi-pinterest{
+    color: red;
+}
+.aside{
+    display: flex;
+    flex-direction: column;
+    
+    border-right: 1px solid #D1D1C7;
+    height: 100dvh;
+}
+.aside__list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    justify-content: space-evenly;
+    height: 70%;
+}
+.aside__item{
+    display: flex;
+    
+}
+.aside__item i{
+    font-size: 1.8rem;
+    padding: 10px;
+    border-radius: 10px;
+}
+.aside__item i:hover{
+    background-color: #f3f3f3;
+}
+.aside__item .bi-chat{
+    font-size: 1.6rem;
+}
+.main{
+    overflow-y: auto;
+}
+
+/* header and search menu */
+.header{
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color);
+    align-items: center;
+    padding: 10px;
+    padding-top: 10px;
+    box-shadow: 2px 5px 30px #d3d3d3;
+    z-index: 1;
+}
+.input__container{
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 90%;
+    height: 50px;
+    border-radius: 20px;
+    padding: 10px;
+}
+.input__container .bi-search{
+    position: absolute;
+    margin-left: 30px;
+}
+.input__search{
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: #ebebeb;
+    padding-left: 70px;
+    font-size:15px;
+    
+}
+.input__search:focus{
+    outline: 5px solid #71edfd;
+}
+
+/* Perfil container image and drop menu */
+
+.perfil__container{
+    display: flex;
+    align-items: center;
+}
+.image__container{
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.image__container img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.image__container, .menu__drop{
+    margin: 0px 5px 0px 5px;
+}
+
+
+
+/* content menu */
+.content__menu{
+    width: 100%;
+    height: 100%;
+    
+}
+
+
+.header__publish{
+    position: relative;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+.header__publish h2{
+    margin-left: 30px;
+}
+.header__publish button{
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+    padding: 20px 30px 20px 30px;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    background-color: #E60023;
+    font-size: 20px;
+}
+.header__publish button:is(:hover,:active){
+    background-color: #ce0321;
+  
+}
+/* form and form publish */
+
+
+.form__publish{
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.drop-img{
+    display: flex;
+    margin:15px auto 15px auto;
+    height: 100%;
+}
+
+.container__img{
+    width: 450px;
+    height: 80%;
+    background-color: #E0E0D9;
+    border-radius: 30px;
+}
+
+
+.form__items{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.form__items input:focus{
+    outline: 3px solid #6bbafa;
+}
+
+.form__items input{
+    padding: 20px;
+    border:1px solid  var(--border-color);
+    border-radius: 20px;
+    font-size: 15px;
+}
+#desc{
+    height: 120px;
+    padding: 5px;
+    text-align: start;
+}
+.form__items label{
+    padding: 20px;
+    color: #999;
+    font-size: 20px;
+    
+    border-radius: 20px;
+}
+
+
+
+
+
+/* Home and wrapper pin */
+.main__pin-container{
+    margin: 10px;
+    
+}
+
+.view__pin{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: auto-fill;
+    gap: 10px ;
+    margin: 20px;
+}
+
+.wrapper__pin{
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: auto-fill 1fr;
+   
+   border-radius: 10px;
+}
+.pin__image-container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px 10px 0px 0px;
+}
+.pin__image-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: 100% 100%;
+}
+
+
+
+/* pin info desc */
+
+.pin__title{
+    text-align: center;
+    font-size: 20px;
+}
+.desc__container-p{
+    text-align: center;
+    margin: 1lh;
+    overflow: hidden;
+}
