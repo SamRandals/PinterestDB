@@ -277,15 +277,26 @@ async function setPublishButton(){
             }
             
             await startDB();
-            alert("Los datos fueron guardados correctamente!")
+           showToast("🟩 Guardado correctamente!");
             await addPin(newPin);
             
+           
 
     }
         })
     }
     catch(e){
-        console.log(e.error)
-        console.log("No se pudieron guardar los datos :(")
+        console.log(e)
+       showToast("🟥Ocurrio un error al guardar tus datos");
     }
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000); // se oculta después de 3s
 }
