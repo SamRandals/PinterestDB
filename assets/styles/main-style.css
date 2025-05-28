@@ -224,20 +224,18 @@ body{
     
 }
 
-.view__pin{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-template-rows: auto-fill;
-    gap: 10px ;
-    margin: 20px;
+.view__pin {
+  column-count: 4; /* o auto con column-width */
+  column-gap: 16px;
+  padding: 10px;
 }
 
-.wrapper__pin{
-   display: grid;
-   grid-template-columns: 1fr;
-   grid-template-rows: 4fr 1fr;
-   border-radius: 10px;
+.wrapper__pin {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  display: block; /* quitar grid */
 }
+
 .pin__image-container{
     position: relative;
     width: 100%;
@@ -246,6 +244,7 @@ body{
     border-radius: 10px 10px 0px 0px;
 }
 
+/* hover image */
 .img__hover{
     position: absolute;
     top: 0;
@@ -268,20 +267,38 @@ body{
 
 
 .menu__hover-header{
-    padding: 10px;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-around;
+    padding: 10px 3px 10px 5px;
 }
+/* perfil button hover style */
 .perfil-button-hover{
     color: #fff;
-    padding: 20px;
+    padding: 15px 20px 15px 20px;
     border-radius: 20px;
     background-color: transparent;
     border: none;
+    font-size: 15px;
 }
 .perfil-button-hover:hover{
     
     background-color: #363636;
 }
+/* save button hoverp in style */
+.save-button-pin{
+     padding: 15px 20px 15px 20px;
+    background-color: #ce0321;
+    color: #ffff;
+    border: none;
+    border-radius: 20px;
+    font-size: 15px;
+}
 
+.save-button-pin:hover{
+    background-color: #b6021d;
+}
 /* pin info desc */
 
 .pin__title{
