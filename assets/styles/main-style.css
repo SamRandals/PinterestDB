@@ -9,6 +9,16 @@ body{
     color: #222;
 }
 
+/* clases  */
+
+.hidden{
+    display: none;
+}
+.appear{
+    display: flex;
+}
+
+/* main wrapper container de 2 columnas, una para el aside, otra para el main */
 .main__container{
     display: grid;
     grid-template-columns: minmax(70px, 80px)1fr;
@@ -225,23 +235,52 @@ body{
 .wrapper__pin{
    display: grid;
    grid-template-columns: 1fr;
-   grid-template-rows: auto-fill 1fr;
-   
+   grid-template-rows: 4fr 1fr;
    border-radius: 10px;
 }
 .pin__image-container{
+    position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
     border-radius: 10px 10px 0px 0px;
 }
+
+.img__hover{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #3f3f3f4f;
+    cursor: pointer;
+}
+
 .pin__image-container img{
     width: 100%;
     height: 100%;
-    object-fit: 100% 100%;
+    object-fit: 100% 100% ;
 }
 
 
+/* hover buttons */
+
+
+
+.menu__hover-header{
+    padding: 10px;
+}
+.perfil-button-hover{
+    color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: transparent;
+    border: none;
+}
+.perfil-button-hover:hover{
+    
+    background-color: #363636;
+}
 
 /* pin info desc */
 

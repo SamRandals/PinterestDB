@@ -89,23 +89,41 @@ async function readPin(){
 
              wrapper.innerHTML = `
                 <div class="pin__image-container">
-                    <img src="${img}">
-                </div>
-                <div class="pin__info">
-                    <h2 class="pin__title">${title}</h2>
-                    <div class="desc__container-p">
-                        <p>${desc}</p>
+
+                    <img class="pin__image" src="${img}">
+                    <div class="img__hover hidden">
+                        <div class="menu__hover-header">
+                            <button class="perfil-button-hover">Perfil</button>    
+                            <button class="save-button-pin">Guardar</button>    
+                        </div>
                     </div>
+
                 </div>
+
+                <div class="pin__info">
+
+                    <h2 class="pin__title">${title}</h2>
+
+                    <div class="desc__container-p">
+
+                        <p>${desc}</p>
+
+                    </div>
+
+                </div>
+
             `;
+            
 
+  
             viewPins.appendChild(wrapper);
-
+              
      cursor.continue(); 
 
         }else {
             // ✅ Al terminar el cursor, añade el contenedor global
             contentMenu.appendChild(viewPins);
+            imageHover();
         }
         
     }
@@ -299,4 +317,29 @@ function showToast(message) {
   setTimeout(() => {
     toast.classList.remove("show");
   }, 3000); // se oculta después de 3s
+}
+
+
+
+
+// function para hovers
+
+
+
+function imageHover() {
+  const wrappers = document.querySelectorAll(".pin__image-container");
+
+  wrappers.forEach((container) => {
+    const hoverElement = container.querySelector(".img__hover");
+
+    container.addEventListener("mouseenter", () => {
+      hoverElement.classList.remove("hidden");
+      hoverElement.classList.add("appear");
+    });
+
+    container.addEventListener("mouseleave", () => {
+      hoverElement.classList.add("hidden");
+      hoverElement.classList.remove("appear");
+    });
+  });
 }
