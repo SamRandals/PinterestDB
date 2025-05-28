@@ -225,10 +225,12 @@ body{
 }
 
 .view__pin {
-  column-count: 4; /* o auto con column-width */
+  column-width: 200px;
   column-gap: 16px;
   padding: 10px;
 }
+
+
 
 .wrapper__pin {
   break-inside: avoid;
