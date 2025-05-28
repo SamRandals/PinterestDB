@@ -283,6 +283,14 @@ async function setPublishButton(){
             const tablero = document.getElementById("tablero").value;
             const tag = document.getElementById("tag").value;
 
+            if(!title){
+                showToast("🟥 Necesitas un titulo!");
+                return
+            }
+            else if(!img){
+                showToast("🟥 Necesitas una imagen como minimo!");
+                return;
+            }
             
             const newPin={
 
