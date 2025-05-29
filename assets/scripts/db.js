@@ -17,13 +17,13 @@ function openDB(){
     }
 
     DBRequest.onsuccess=()=>{
-        db= DBRequest.result
-        resolve(db.result);
+        db= DBRequest.result;
+        resolve(db);
     }
 
     DBRequest.onerror=()=>{
-        db= DBRequest.result
-        reject(db.result)
+        db= DBRequest.result;
+        reject(db);
     }
     });
  
@@ -80,7 +80,7 @@ async function readPin(){
     request.onsuccess=async(e)=>{
         let cursor= e.target.result;
         if(cursor){
-            let  {img, title, desc }= cursor.value;
+            let  {id, img, title, desc }= cursor.value;
            
           
             //
@@ -90,7 +90,7 @@ async function readPin(){
              wrapper.innerHTML = `
                 <div class="pin__image-container">
 
-                    <img class="pin__image" src="${img}">
+                    <img class="pin__image" src="${img}" data-id="${id}">
                     <div class="img__hover hidden">
                         <div class="menu__hover-header">
                             <button class="perfil-button-hover">Perfil</button>    
@@ -124,6 +124,7 @@ async function readPin(){
             // ✅ Al terminar el cursor, añade el contenedor global
             contentMenu.appendChild(viewPins);
             imageHover();
+            viewInfo();
         }
         
     }
@@ -132,11 +133,11 @@ async function readPin(){
 }
 
 const homeButton= document.querySelector(".home-button");
-    homeButton.addEventListener("click",()=>[
+    homeButton.addEventListener("click",()=>{
         readPin()
-    ])
+    })
 
-window.addEventListener("DOMContentLoaded", readPin());
+window.addEventListener("DOMContentLoaded", readPin);
 
 
 
@@ -350,4 +351,70 @@ function imageHover() {
       hoverElement.classList.remove("appear");
     });
   });
+}
+
+
+// Funcion paracargar el apartado de vistas
+
+
+function viewInfo() {
+  try {
+    const hoverElements = document.querySelectorAll(".img__hover");
+
+    hoverElements.forEach((hover) => {
+      hover.addEventListener("click", async (e) => {
+        // Obtener la imagen hermana que tiene el data-id
+        const imgElement = hover.parentElement.querySelector(".pin__image");
+        if (!imgElement) {
+          showToast("🟥 Imagen no encontrada");
+          return;
+        }
+
+        const rawId = imgElement.dataset.id;
+        if (!rawId || isNaN(rawId)) {
+          showToast("🟥 ID inválido");
+          return;
+        }
+
+        const pinId = Number(rawId);
+
+        const trans = db.transaction("Pin", "readonly");
+        const store = trans.objectStore("Pin");
+        const request = store.get(pinId);
+
+        request.onsuccess = (e) => {
+          const pin = e.target.result;
+
+          if (!pin) {
+            showToast("🟥 Pin no encontrado");
+            return;
+          }
+
+          const contentMenu = document.querySelector(".content__menu");
+          contentMenu.innerHTML = "";
+
+          const pinView = document.createElement("div");
+          pinView.classList.add("main-pin");
+          pinView.innerHTML = `
+            <div class="img__container-click">
+                <img src="${pin.img}" alt="${pin.title}">
+
+            </div>
+            <h2>${pin.title}</h2>
+            <p>${pin.desc}</p>
+            <a href="${pin.link}" target="_blank">${pin.link}</a>
+          `;
+
+          contentMenu.appendChild(pinView);
+        };
+
+        request.onerror = () => {
+          showToast("🟥 Error al recuperar el pin");
+        };
+      });
+    });
+  } catch (e) {
+    console.error("Error en viewInfo:", e);
+    showToast("🟥 Error inesperado al mostrar el pin");
+  }
 }
