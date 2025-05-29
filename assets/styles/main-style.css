@@ -320,6 +320,7 @@ body{
 /* Pin click view */
 
 .main-pin {
+    width: 500px;
   max-width: 600px;
   margin: 10px 0px 0px 10px;
   background: #ffffff;
