@@ -284,20 +284,37 @@ function viewInfo() {
             return;
           }
 
+          //menu donde se carga las publicaciones
           const contentMenu = document.querySelector(".content__menu");
           contentMenu.innerHTML = "";
 
+          // Menu que contiene el pin seleccionado
           const pinView = document.createElement("div");
           pinView.classList.add("main-pin");
+          // flecha estilizada para volver atras
+
+          const arrowBack = document.createElement("p");
+          arrowBack.textContent="a"
+          arrowBack.classList.add("arrow-back-button");
+
+
+           pinView.appendChild(arrowBack);
+        
           pinView.innerHTML = `
+            <div class="wrapper__content-and-back-button ">
+
+           
             <div class="img__container-click">
               <img src="${pin.img}" alt="${pin.title}">
             </div>
             <h2>${pin.title}</h2>
+            
             <p>${pin.desc}</p>
             <a href="${pin.link}" target="_blank">${pin.link}</a>
-          `;
 
+            </div>
+          `;
+         
           const morePins = await seeMorePins();
           contentMenu.appendChild(pinView);
           contentMenu.appendChild(morePins);

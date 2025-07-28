@@ -320,12 +320,12 @@ body{
 /* Pin click view */
 
 .main-pin {
+    display: flex;
     width: 500px;
-  max-width: 600px;
+  max-width: 700px;
   margin: 10px 0px 0px 10px;
   background: #ffffff;
   border-radius: 20px;
-  border: 1px solid var(--border-color);
   overflow: hidden;
   padding: 1.5rem;
   font-family: 'Segoe UI', sans-serif;
@@ -336,6 +336,13 @@ body{
   
 }
 
+.wrapper__content-and-back-button{
+    display: flex;
+    flex-direction: column;
+    border:1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 10px;
+}
 .img__container-click{
     width: 50%;
     margin: 0px auto 0px auto;
@@ -373,4 +380,8 @@ body{
 
 .main-pin a:hover {
   text-decoration: underline;
+}
+
+.arrow-back-button{
+    font-size: 20px;
 }
